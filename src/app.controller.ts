@@ -11,6 +11,11 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Get('instructions')
+  async getInstructions() {
+    return this.appService.getInstructions();
+  }
+
   @Post('instructions')
   async createInstruction(@Body() createInstructionDto: CreateInstructionDto) {
     return this.appService.createInstruction(createInstructionDto);

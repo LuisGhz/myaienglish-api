@@ -15,6 +15,10 @@ export class AppService {
     return 'Hello World!';
   }
 
+  getInstructions() {
+    return this.instructionRepository.find();
+  }
+
   async createInstruction({ name, content }: CreateInstructionDto): Promise<Instruction> {
     const instruction = this.instructionRepository.create({ name, content });
     return this.instructionRepository.save(instruction);
