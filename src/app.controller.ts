@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateInstructionDto } from './dtos/instructions/create-instruction.dto';
 
-@Controller()
+@Controller("api")
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
