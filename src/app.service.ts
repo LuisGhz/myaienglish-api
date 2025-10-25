@@ -12,10 +12,6 @@ export class AppService {
     @InjectRepository(Instruction) private instructionRepository: Repository<Instruction>,
   ) { }
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
   getInstructions() {
     return this.instructionRepository.find();
   }
