@@ -2,10 +2,16 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { AppService } from './app.service';
 import { CreateInstructionDto } from './dtos/instructions/create-instruction.dto';
 import { UpdateInstructionDto } from './dtos/instructions/update-instruction.dto';
+import { TranslateTextReqDto } from './dtos/translate/translate-text.req.dto';
 
 @Controller("api")
 export class AppController {
   constructor(private readonly appService: AppService) { }
+
+  @Post('translate')
+  async translate(@Body() body: TranslateTextReqDto) {
+    return this.appService.translateText(body);
+  }
 
   @Get('instructions')
   async getInstructions() {
