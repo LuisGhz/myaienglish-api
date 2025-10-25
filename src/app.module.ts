@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { EnvModule } from './config/env.module';
 import { DatabaseModule } from './db/database.module';
 import { Instruction } from './entities/instruction.entity';
+import { OpenAIService } from './openai.service';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { Instruction } from './entities/instruction.entity';
     TypeOrmModule.forFeature([Instruction]),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, OpenAIService],
 })
-export class AppModule {}
+export class AppModule { }
