@@ -1,43 +1,40 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import type { EnvConfig } from './env.validation';
 
 @Injectable()
 export class EnvService {
-  private config: EnvConfig;
-
-  constructor(config: EnvConfig) {
-    this.config = config;
-  }
+  constructor(private configService: ConfigService<EnvConfig, true>) {}
 
   get nodeEnv(): string {
-    return this.config.NODE_ENV;
+    return this.configService.get('NODE_ENV', { infer: true });
   }
 
   get port(): number {
-    return this.config.PORT;
+    return this.configService.get('PORT', { infer: true });
   }
 
   get openaiApiKey(): string {
-    return this.config.OPENAI_API_KEY;
+    return this.configService.get('OPENAI_API_KEY', { infer: true });
   }
 
   get dbHost(): string {
-    return this.config.DB_HOST;
+    return this.configService.get('DB_HOST', { infer: true });
   }
 
   get dbPort(): number {
-    return this.config.DB_PORT;
+    return this.configService.get('DB_PORT', { infer: true });
   }
 
   get dbUsername(): string {
-    return this.config.DB_USERNAME;
+    return this.configService.get('DB_USERNAME', { infer: true });
   }
 
   get dbPassword(): string {
-    return this.config.DB_PASSWORD;
+    return this.configService.get('DB_PASSWORD', { infer: true });
   }
 
   get dbName(): string {
-    return this.config.DB_NAME;
+    return this.configService.get('DB_NAME', { infer: true });
   }
 }

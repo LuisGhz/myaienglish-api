@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { EnvModule } from '../config/env.module';
 import { EnvService } from '../config/env.service';
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
+      imports: [EnvModule],
       inject: [EnvService],
       useFactory: (envService: EnvService) => ({
         type: 'postgres',
