@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import OpenAI from "openai";
-import { TranslateTextResDto } from "./dtos/translate/translate-text.res.dto";
+import { TranslateTextResDto } from "../dtos/translate/translate-text.res.dto";
 
 @Injectable()
 export class OpenAIService {
