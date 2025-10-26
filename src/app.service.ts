@@ -6,12 +6,15 @@ import { CreateInstructionDto } from './dtos/instructions/create-instruction.dto
 import { UpdateInstructionDto } from './dtos/instructions/update-instruction.dto';
 import { TranslateTextReqDto } from './dtos/translate/translate-text.req.dto';
 import { OpenAIService } from './openai.service';
+import { AddFavTranslationReqDto } from './dtos/translate/add-fav-translation.req.dto';
+import { FavTranslation } from './entities/fav-translation.entity';
 
 @Injectable()
 export class AppService {
 
   constructor(
     @InjectRepository(Instruction) private instructionRepository: Repository<Instruction>,
+    @InjectRepository(FavTranslation) private favTranslationRepository: Repository<FavTranslation>,
     private openAIService: OpenAIService
   ) { }
 
@@ -43,5 +46,18 @@ export class AppService {
   async deleteInstruction(id: string): Promise<{ success: boolean }> {
     const result = await this.instructionRepository.delete(id);
     return { success: (result.affected ?? 0) > 0 };
+  }
+
+  getFavTranslations() {
+    return this.favTranslationRepository.find();
+  }
+
+  addFavTranslation(body: AddFavTranslationReqDto) {
+    const favTranslation = this.favTranslationRepository.create(body);
+    return this.favTranslationRepository.save(favTranslation);
+  }
+
+  deleteFavTranslation(id: string) {
+    return this.favTranslationRepository.delete(id);
   }
 }

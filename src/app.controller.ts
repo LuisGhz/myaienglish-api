@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { CreateInstructionDto } from './dtos/instructions/create-instruction.dto';
 import { UpdateInstructionDto } from './dtos/instructions/update-instruction.dto';
 import { TranslateTextReqDto } from './dtos/translate/translate-text.req.dto';
+import { AddFavTranslationReqDto } from './dtos/translate/add-fav-translation.req.dto';
 
 @Controller("api")
 export class AppController {
@@ -11,6 +12,21 @@ export class AppController {
   @Post('translate')
   async translate(@Body() body: TranslateTextReqDto) {
     return this.appService.translateText(body);
+  }
+
+  @Get('favorites/translations')
+  async getFavTranslations() {
+    return this.appService.getFavTranslations();
+  }
+
+  @Post('favorites/translations')
+  async addFavTranslation(@Body() body: AddFavTranslationReqDto) {
+    return this.appService.addFavTranslation(body);
+  }
+
+  @Delete('favorites/translations/:id/delete')
+  async deleteFavTranslation(@Param('id') id: string) {
+    return this.appService.deleteFavTranslation(id);
   }
 
   @Get('instructions')
