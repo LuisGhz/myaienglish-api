@@ -7,12 +7,12 @@ import { InstructionService } from "src/services";
 export class InstructionController {
   constructor(private instructionService: InstructionService) { }
 
-  @Get('')
+  @Get()
   async getInstructions() {
     return this.instructionService.getInstructions();
   }
 
-  @Post('')
+  @Post()
   async createInstruction(@Body() createInstructionDto: CreateInstructionDto) {
     return this.instructionService.createInstruction(createInstructionDto);
   }
