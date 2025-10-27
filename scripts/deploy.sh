@@ -77,6 +77,7 @@ docker run -d \
   -e DB_PASSWORD="${DB_PASSWORD}" \
   -e DB_NAME="${DB_NAME}" \
   -e NODE_ENV="${NODE_ENV}" \
+  --network dbs \
   --name ${CONTAINER_NAME} \
   ${IMAGE_NAME}:latest
 
