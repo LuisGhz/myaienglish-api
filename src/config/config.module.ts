@@ -1,12 +1,17 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
+import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EnvModule } from '../config/env.module';
-import { EnvService } from '../config/env.service';
+import { validateEnv } from './env.validation';
+import { EnvService } from './env.service';
 
+@Global()
 @Module({
   imports: [
+    NestConfigModule.forRoot({
+      isGlobal: true,
+      validate: validateEnv,
+    }),
     TypeOrmModule.forRootAsync({
-      imports: [EnvModule],
       inject: [EnvService],
       useFactory: (envService: EnvService) => ({
         type: 'postgres',
@@ -21,5 +26,7 @@ import { EnvService } from '../config/env.service';
       }),
     }),
   ],
+  providers: [EnvService],
+  exports: [EnvService],
 })
-export class DatabaseModule { }
+export class ConfigModule {}
