@@ -1,8 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Instruction {
-
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -17,5 +16,4 @@ export class Instruction {
     type: 'text',
   })
   content: string;
-
 }

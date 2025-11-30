@@ -1,2 +1,2 @@
-export * from './instruction.controller';
 export * from './translate.controller';
+export * from './instruction.controller';

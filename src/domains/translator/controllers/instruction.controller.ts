@@ -1,11 +1,19 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
-import { CreateInstructionDto } from "src/dtos/instructions/create-instruction.dto";
-import { UpdateInstructionDto } from "src/dtos/instructions/update-instruction.dto";
-import { InstructionService } from "src/services";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
+import { InstructionService } from '../services/instruction.service';
+import { CreateInstructionDto } from '../dtos/create-instruction.dto';
+import { UpdateInstructionDto } from '../dtos/update-instruction.dto';
 
 @Controller('api/instructions')
 export class InstructionController {
-  constructor(private instructionService: InstructionService) { }
+  constructor(private instructionService: InstructionService) {}
 
   @Get()
   async getInstructions() {

@@ -1,12 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
-import { AddFavTranslationReqDto } from "src/dtos/translate/add-fav-translation.req.dto";
-import { TranslateTextReqDto } from "src/dtos/translate/translate-text.req.dto";
-import { TranslateService } from "src/services";
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { TranslateService } from '../services/translate.service';
+import { TranslateTextReqDto } from '../dtos/translate-text.req.dto';
+import { AddFavTranslationReqDto } from '../dtos/add-fav-translation.req.dto';
 
 @Controller('api/translate')
 export class TranslateController {
-
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService) {}
 
   @Post()
   async translate(@Body() body: TranslateTextReqDto) {
