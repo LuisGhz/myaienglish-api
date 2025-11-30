@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
-import OpenAI from "openai";
-import { TranslateTextResDto } from "../dtos/translate/translate-text.res.dto";
+import { Injectable } from '@nestjs/common';
+import OpenAI from 'openai';
+import { TranslateTextResDto } from './interfaces/translate-text-res.interface';
 
 @Injectable()
 export class OpenAIService {
@@ -12,11 +12,10 @@ export class OpenAIService {
     });
   }
 
-
   async translateText(prompt: string): Promise<TranslateTextResDto> {
     const res = await this.openai.responses.create({
       model: 'gpt-4o-mini',
-      input: prompt
+      input: prompt,
     });
     return {
       translatedText: res.output_text,
@@ -25,5 +24,4 @@ export class OpenAIService {
       totalTokens: res.usage?.total_tokens,
     };
   }
-
 }
