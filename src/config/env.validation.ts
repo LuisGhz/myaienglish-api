@@ -9,6 +9,10 @@ const envSchema = z.object({
   DB_USERNAME: z.string().min(1, 'DB_USERNAME is required'),
   DB_PASSWORD: z.string().min(1, 'DB_PASSWORD is required'),
   DB_NAME: z.string().min(1, 'DB_NAME is required'),
+  JWT_SECRET: z.string().min(1, 'JWT_SECRET is required'),
+  JWT_EXPIRES_IN: z.string().min(1, 'JWT_EXPIRES_IN is required'),
+  REFRESH_TOKEN_LENGTH: z.coerce.number().default(64),
+  REFRESH_TOKEN_EXPIRES_IN: z.string().min(1, 'REFRESH_TOKEN_EXPIRES_IN is required'),
 });
 
 export type EnvConfig = z.infer<typeof envSchema>;
