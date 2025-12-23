@@ -13,13 +13,6 @@ export class User {
 
   @Column({
     type: 'varchar',
-    length: 255,
-    nullable: true,
-  })
-  avatarUrl: string | null;
-
-  @Column({
-    type: 'varchar',
     length: 100,
   })
   fullName: string;
