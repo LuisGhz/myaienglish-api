@@ -29,9 +29,7 @@ export class AuthService {
 
   async register(dto: RegisterReqDto): Promise<{ message: string }> {
     const existingUser = await this.userService.findByEmail(dto.email);
-    if (existingUser) {
-      throw new BadRequestException('Email already registered');
-    }
+    if (existingUser) throw new BadRequestException('Email already registered');
 
     const hashedPassword = await bcrypt.hash(dto.password, this.SALT_ROUNDS);
 
@@ -50,22 +48,18 @@ export class AuthService {
     ip: string | null,
   ): Promise<{ loginRes: LoginResDto; refreshToken: string }> {
     const user = await this.userService.findByEmail(dto.email);
-    if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
-    }
+    if (!user) throw new UnauthorizedException('Invalid credentials');
 
     const isPasswordValid = await bcrypt.compare(dto.password, user.password);
-    if (!isPasswordValid) {
+    if (!isPasswordValid)
       throw new UnauthorizedException('Invalid credentials');
-    }
 
     const hasReachedLimit =
       await this.refreshTokenService.hasReachedSessionLimit(user.id);
-    if (hasReachedLimit) {
+    if (hasReachedLimit)
       throw new BadRequestException(
         'Maximum number of active sessions reached. Please logout from another device.',
       );
-    }
 
     const payload: JwtPayload = { sub: user.id, email: user.email };
     const accessToken = this.jwtService.sign(payload);
@@ -143,9 +137,7 @@ export class AuthService {
     const sessions = await this.refreshTokenService.findActiveByUserId(userId);
     const session = sessions.find((s) => s.id === sessionId);
 
-    if (!session) {
-      throw new BadRequestException('Session not found');
-    }
+    if (!session) throw new BadRequestException('Session not found');
 
     await this.refreshTokenService.revoke(sessionId);
     return { message: 'Session revoked successfully' };
