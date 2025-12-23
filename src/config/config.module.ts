@@ -3,6 +3,7 @@ import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { validateEnv } from './env.validation';
 import { EnvService } from './env.service';
+import { typeOrmModuleConfig } from './db/typeorm.module.config';
 
 @Global()
 @Module({
@@ -10,21 +11,9 @@ import { EnvService } from './env.service';
     NestConfigModule.forRoot({
       isGlobal: true,
       validate: validateEnv,
+      load: [typeOrmModuleConfig],
     }),
-    TypeOrmModule.forRootAsync({
-      inject: [EnvService],
-      useFactory: (envService: EnvService) => ({
-        type: 'postgres',
-        host: envService.dbHost,
-        port: envService.dbPort,
-        username: envService.dbUsername,
-        password: envService.dbPassword,
-        database: envService.dbName,
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        synchronize: envService.nodeEnv === 'development',
-        logging: envService.nodeEnv === 'development',
-      }),
-    }),
+    TypeOrmModule.forRootAsync(typeOrmModuleConfig()),
   ],
   providers: [EnvService],
   exports: [EnvService],
