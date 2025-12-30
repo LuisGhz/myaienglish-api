@@ -61,7 +61,7 @@ export class AuthService {
         'Maximum number of active sessions reached. Please logout from another device.',
       );
 
-    const payload: JwtPayload = { sub: user.id, email: user.email };
+    const payload: Partial<JwtPayload> = { sub: user.id, email: user.email };
     const accessToken = this.jwtService.sign(payload);
 
     const refreshTokenEntity = await this.refreshTokenService.create(
@@ -94,7 +94,7 @@ export class AuthService {
     await this.refreshTokenService.revoke(refreshToken.id);
 
     const user = refreshToken.user;
-    const payload: JwtPayload = { sub: user.id, email: user.email };
+    const payload: Partial<JwtPayload> = { sub: user.id, email: user.email };
     const accessToken = this.jwtService.sign(payload);
 
     const newRefreshToken = await this.refreshTokenService.create(
