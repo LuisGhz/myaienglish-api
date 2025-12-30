@@ -78,10 +78,7 @@ export class AuthController {
   }
 
   @Post('logout')
-  async logout(
-    @Req() req: Request,
-    @Res({ passthrough: true }) res: Response,
-  ) {
+  async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const token = req.cookies?.[REFRESH_TOKEN_COOKIE];
     if (token) {
       await this.authService.logout(token);
@@ -93,10 +90,7 @@ export class AuthController {
   }
 
   @Get('sessions')
-  async getSessions(
-    @CurrentUser() user: JwtPayload,
-    @Req() req: Request,
-  ) {
+  async getSessions(@CurrentUser() user: JwtPayload, @Req() req: Request) {
     const currentToken = req.cookies?.[REFRESH_TOKEN_COOKIE];
     return this.authService.getSessions(user.sub, currentToken);
   }
