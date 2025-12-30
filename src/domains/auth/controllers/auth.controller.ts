@@ -15,7 +15,7 @@ import { RegisterReqDto, LoginReqDto } from '../dtos';
 import { Public, CurrentUser } from '../../../common/decorators';
 import { EnvService } from '../../../config';
 
-const REFRESH_TOKEN_COOKIE = 'refreshToken';
+const REFRESH_TOKEN_COOKIE = 'myAIEnglishRefreshToken';
 
 @Controller('api/auth')
 export class AuthController {
