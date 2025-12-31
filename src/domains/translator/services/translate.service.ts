@@ -17,21 +17,8 @@ export class TranslateService {
     private openAIService: OpenAIService,
   ) {}
 
-  async translateText({
-    instructionId,
-    context,
-    textToTranslate,
-  }: TranslateTextReqDto) {
-    const instruction = await this.instructionRepository.findOneBy({
-      id: instructionId,
-    });
-    const prompt = `
-        You are an expert on languages translation your job is to help to the user with the given text ""${textToTranslate}"".
-        This according to the following instructions: ""${instruction!.content}""
-        ${context ? `Also consider the following context which can help you to give a better translation/explanation: ""${context}""` : ''}
-      `;
-
-    return this.openAIService.translateText(prompt);
+  async translateText({ context, textToTranslate }: TranslateTextReqDto) {
+    return this.openAIService.translateText(textToTranslate, context);
   }
 
   getFavTranslations() {

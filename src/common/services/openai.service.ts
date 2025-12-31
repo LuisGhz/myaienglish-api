@@ -1,6 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import OpenAI from 'openai';
-import { TranslateTextResDto } from './interfaces/translate-text-res.interface';
+import {
+  getPrompt,
+  openAITranslationFormat,
+  translationInstructions,
+  TranslationSchema,
+} from '../utils';
 
 @Injectable()
 export class OpenAIService {
@@ -12,16 +17,19 @@ export class OpenAIService {
     });
   }
 
-  async translateText(prompt: string): Promise<TranslateTextResDto> {
-    const res = await this.openai.responses.create({
+  async translateText(
+    text: string,
+    context?: string,
+  ): Promise<TranslationSchema | null> {
+    const prompt = getPrompt(text, context);
+    const res = await this.openai.responses.parse({
       model: 'gpt-4o-mini',
+      instructions: translationInstructions,
       input: prompt,
+      text: {
+        format: openAITranslationFormat,
+      },
     });
-    return {
-      translatedText: res.output_text,
-      inputTokens: res.usage?.input_tokens,
-      outputTokens: res.usage?.output_tokens,
-      totalTokens: res.usage?.total_tokens,
-    };
+    return res.output_parsed;
   }
 }
