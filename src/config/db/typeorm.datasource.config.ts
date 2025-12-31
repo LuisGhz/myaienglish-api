@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { validateEnv } from '../env.validation';
+import { validateEnv } from '../env.schema';
 
 // Load environment variables for CLI commands
 config();

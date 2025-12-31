@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { validateEnv } from './env.validation';
+import { validateEnv } from './env.schema';
 import { EnvService } from './env.service';
 import { typeOrmModuleConfig } from './db/typeorm.module.config';
 
