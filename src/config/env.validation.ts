@@ -1,7 +1,10 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+  NODE_ENV: z
+    .enum(['development', 'production', 'test'])
+    .default('development'),
+  FRIONTEND_URL: z.url().default('http://localhost:4200'),
   PORT: z.coerce.number().default(3000),
   OPENAI_API_KEY: z.string().min(1, 'OPENAI_API_KEY is required'),
   DB_HOST: z.string().default('localhost'),
@@ -12,7 +15,9 @@ const envSchema = z.object({
   JWT_SECRET: z.string().min(1, 'JWT_SECRET is required'),
   JWT_EXPIRES_IN: z.string().min(1, 'JWT_EXPIRES_IN is required'),
   REFRESH_TOKEN_LENGTH: z.coerce.number().default(64),
-  REFRESH_TOKEN_EXPIRES_IN: z.string().min(1, 'REFRESH_TOKEN_EXPIRES_IN is required'),
+  REFRESH_TOKEN_EXPIRES_IN: z
+    .string()
+    .min(1, 'REFRESH_TOKEN_EXPIRES_IN is required'),
 });
 
 export type EnvConfig = z.infer<typeof envSchema>;

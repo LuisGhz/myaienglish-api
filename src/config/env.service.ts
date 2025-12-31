@@ -10,6 +10,10 @@ export class EnvService {
     return this.configService.get('NODE_ENV', { infer: true });
   }
 
+  get frontendUrl(): string {
+    return this.configService.get('FRIONTEND_URL', { infer: true });
+  }
+
   get port(): number {
     return this.configService.get('PORT', { infer: true });
   }
