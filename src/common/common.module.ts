@@ -1,8 +1,6 @@
 import { Global, Module } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { OpenAIService } from './services/openai.service';
-import { JwtAuthGuard } from './guards';
 import { ConfigModule as NestConfigModule, EnvService } from '../config';
 
 @Global()
@@ -17,13 +15,7 @@ import { ConfigModule as NestConfigModule, EnvService } from '../config';
       }),
     }),
   ],
-  providers: [
-    OpenAIService,
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard,
-    },
-  ],
+  providers: [OpenAIService],
   exports: [OpenAIService, JwtModule],
 })
 export class CommonModule {}

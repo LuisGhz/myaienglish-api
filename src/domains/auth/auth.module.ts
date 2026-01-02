@@ -22,6 +22,6 @@ import { ConfigModule, EnvService } from '../../config';
   ],
   controllers: [AuthController],
   providers: [AuthService, RefreshTokenService],
-  exports: [AuthService],
+  exports: [AuthService, RefreshTokenService],
 })
 export class AuthModule {}
