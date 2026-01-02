@@ -1,9 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from './config';
 import { CommonModule } from './common';
-import { TranslatorModule, AuthModule, UserModule } from './domains';
+import { EnglishEnhancerModule, AuthModule, UserModule } from './domains';
 
 @Module({
-  imports: [ConfigModule, CommonModule, TranslatorModule, AuthModule, UserModule],
+  imports: [
+    ConfigModule,
+    CommonModule,
+    EnglishEnhancerModule,
+    AuthModule,
+    UserModule,
+  ],
 })
 export class AppModule {}

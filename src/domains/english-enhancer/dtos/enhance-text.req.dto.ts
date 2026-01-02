@@ -1,10 +1,10 @@
 import { IsOptional, IsString } from 'class-validator';
 
-export class TranslateTextReqDto {
+export class EnhanceTextReqDto {
   @IsString()
   @IsOptional()
   context?: string;
 
   @IsString()
-  textToTranslate: string;
+  textToEnhance: string;
 }

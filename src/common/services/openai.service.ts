@@ -17,7 +17,7 @@ export class OpenAIService {
     });
   }
 
-  async translateText(
+  async enhanceText(
     text: string,
     context?: string,
   ): Promise<TranslationSchema | null> {
