@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { EnhanceService } from './services/enhance.service';
-import { EnhanceController } from './controllers/enhance.controller';
+import { EnhanceController } from './enhance.controller';
 
 @Module({
   controllers: [EnhanceController],

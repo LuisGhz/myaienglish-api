@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import OpenAI from 'openai';
 import {
+  compareInstructions,
+  CompareSchema,
+  getComparePrompt,
   getPrompt,
+  openAICompareFormat,
   openAITranslationFormat,
   translationInstructions,
   TranslationSchema,
@@ -28,6 +32,22 @@ export class OpenAIService {
       input: prompt,
       text: {
         format: openAITranslationFormat,
+      },
+    });
+    return res.output_parsed;
+  }
+
+  async compare(
+    inputs: string[],
+    context?: string,
+  ): Promise<CompareSchema | null> {
+    const prompt = getComparePrompt(inputs, context);
+    const res: any = await this.openai.responses.parse({
+      model: 'gpt-4o-mini',
+      instructions: compareInstructions,
+      input: prompt,
+      text: {
+        format: openAICompareFormat,
       },
     });
     return res.output_parsed;
