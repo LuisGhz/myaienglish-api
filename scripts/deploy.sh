@@ -83,6 +83,7 @@ docker run --rm \
     -e DB_USERNAME="${DB_USERNAME}" \
     -e DB_PASSWORD="${DB_PASSWORD}" \
     -e DB_NAME="${DB_NAME}" \
+    -e OPENAI_API_KEY="${OPENAI_API_KEY}" \
     -e JWT_SECRET="${JWT_SECRET}" \
     -e JWT_EXPIRES_IN="${JWT_EXPIRES_IN}" \
     -e REFRESH_TOKEN_LENGTH="${REFRESH_TOKEN_LENGTH}" \
