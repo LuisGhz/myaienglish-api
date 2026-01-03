@@ -22,9 +22,9 @@
     "migration:run": "bun run typeorm migration:run -d src/config/db/typeorm.datasource.config.ts",
     "migration:show": "bun run typeorm migration:show -d src/config/db/typeorm.datasource.config.ts",
     "migration:revert": "bun run typeorm migration:revert -d src/config/db/typeorm.datasource.config.ts",
-    "migration:run:prod": "bun typeorm-cli.ts migration:run",
-    "migration:revert:prod": "bun typeorm-cli.ts migration:revert",
-    "migration:show:prod": "bun typeorm-cli.ts migration:show",
+    "migration:run:prod": "bun typeorm-cli.js migration:run",
+    "migration:revert:prod": "bun typeorm-cli.js migration:revert",
+    "migration:show:prod": "bun typeorm-cli.js migration:show",
     "migration:auth:generate": "bun run typeorm migration:generate -d src/config/db/typeorm.datasource.config.ts src/domains/auth/migrations/$name",
     "migration:user:generate": "bun run typeorm migration:generate -d src/config/db/typeorm.datasource.config.ts src/domains/user/migrations/$name",
     "migration:translator:generate": "bun run typeorm migration:generate -d src/config/db/typeorm.datasource.config.ts src/domains/translator/migrations/$name"
