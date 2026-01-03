@@ -9,8 +9,8 @@ import { Reflector } from '@nestjs/core';
 import { JwtService, TokenExpiredError } from '@nestjs/jwt';
 import type { Request, Response } from 'express';
 import { IS_PUBLIC_KEY } from '../decorators';
-import { REFRESH_TOKEN_COOKIE } from 'src/domains/auth/controllers/auth.controller';
-import { JwtPayload, RefreshTokenService } from 'src/domains';
+import { REFRESH_TOKEN_COOKIE } from '../../domains/auth/controllers/auth.controller';
+import { JwtPayload, RefreshTokenService } from '../../domains';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
