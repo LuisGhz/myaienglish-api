@@ -16,14 +16,14 @@ RUN bun run build
 FROM oven/bun:1.3.5-alpine AS production
 WORKDIR /app
 
-# Copy package files for production dependencies
+# Copy package files and install only production dependencies
 COPY package.json package-lock.json* ./
 RUN bun install --production
 
-# Copy the built application from the build stage
-COPY --from=build /app/dist ./dist
+# Copy built application (includes compiled migrations and datasource config)
+COPY --from=build /app/dist /app/dist
 
-# Copy the typeorm-cli.ts file for production migrations
+# Copy TypeORM CLI wrapper for running migrations with compiled JS
 COPY typeorm-cli.ts ./
 
 # Expose port 3000
