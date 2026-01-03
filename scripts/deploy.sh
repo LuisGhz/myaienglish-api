@@ -17,6 +17,10 @@ REQUIRED_VARS=(
     "DB_PASSWORD"
     "DB_NAME"
     "OPENAI_API_KEY"
+    "JWT_SECRET"
+    "JWT_EXPIRES_IN"
+    "REFRESH_TOKEN_LENGTH"
+    "REFRESH_TOKEN_EXPIRES_IN"
 )
 
 # Validate all required environment variables
@@ -79,6 +83,10 @@ docker run --rm \
     -e DB_USERNAME="${DB_USERNAME}" \
     -e DB_PASSWORD="${DB_PASSWORD}" \
     -e DB_NAME="${DB_NAME}" \
+    -e JWT_SECRET="${JWT_SECRET}" \
+    -e JWT_EXPIRES_IN="${JWT_EXPIRES_IN}" \
+    -e REFRESH_TOKEN_LENGTH="${REFRESH_TOKEN_LENGTH}" \
+    -e REFRESH_TOKEN_EXPIRES_IN="${REFRESH_TOKEN_EXPIRES_IN}" \
     --network dbs \
     "${IMAGE_NAME}:latest" \
     bun run migration:run:prod
@@ -107,6 +115,10 @@ docker run -d \
     -e DB_PASSWORD="${DB_PASSWORD}" \
     -e DB_NAME="${DB_NAME}" \
     -e OPENAI_API_KEY="${OPENAI_API_KEY}" \
+    -e JWT_SECRET="${JWT_SECRET}" \
+    -e JWT_EXPIRES_IN="${JWT_EXPIRES_IN}" \
+    -e REFRESH_TOKEN_LENGTH="${REFRESH_TOKEN_LENGTH}" \
+    -e REFRESH_TOKEN_EXPIRES_IN="${REFRESH_TOKEN_EXPIRES_IN}" \
     -p ${LOCAL_PORT}:${DOCKER_PORT} \
     --network dbs \
     --name ${CONTAINER_NAME} \
