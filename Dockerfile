@@ -23,9 +23,6 @@ RUN bun install --production
 # Copy built application (includes compiled migrations and datasource config)
 COPY --from=build /app/dist /app/dist
 
-# Copy TypeORM CLI wrapper for running migrations with compiled JS
-COPY typeorm-cli.ts ./
-
 # Expose port 3000
 EXPOSE 3000
 
