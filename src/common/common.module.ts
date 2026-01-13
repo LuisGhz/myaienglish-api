@@ -1,21 +1,12 @@
 import { Global, Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 import { OpenAIService } from './services/openai.service';
-import { ConfigModule as NestConfigModule, EnvService } from '../config';
+import { JwtStrategy } from './strategies';
 
 @Global()
 @Module({
-  imports: [
-    JwtModule.registerAsync({
-      imports: [NestConfigModule],
-      inject: [EnvService],
-      useFactory: (envService: EnvService) => ({
-        secret: envService.jwtSecret,
-        signOptions: { expiresIn: envService.jwtExpiresIn as any },
-      }),
-    }),
-  ],
-  providers: [OpenAIService],
-  exports: [OpenAIService, JwtModule],
+  imports: [PassportModule.register({ defaultStrategy: 'jwt' })],
+  providers: [OpenAIService, JwtStrategy],
+  exports: [OpenAIService, PassportModule],
 })
 export class CommonModule {}
