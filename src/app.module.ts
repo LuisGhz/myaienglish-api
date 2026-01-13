@@ -5,7 +5,6 @@ import { CommonModule } from './common';
 import { JwtAuthGuard } from './common/guards';
 import {
   EnglishEnhancerModule,
-  AuthModule,
   UserModule,
   PhraseComparisonModule,
 } from './domains';
@@ -15,7 +14,6 @@ import {
     ConfigModule,
     CommonModule,
     EnglishEnhancerModule,
-    AuthModule,
     UserModule,
     PhraseComparisonModule,
   ],
