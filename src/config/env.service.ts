@@ -42,19 +42,11 @@ export class EnvService {
     return this.configService.get('DB_NAME', { infer: true });
   }
 
-  get jwtSecret(): string {
-    return this.configService.get('JWT_SECRET', { infer: true });
+  get auth0Domain(): string {
+    return this.configService.get('AUTH0_DOMAIN', { infer: true });
   }
 
-  get jwtExpiresIn(): string {
-    return this.configService.get('JWT_EXPIRES_IN', { infer: true });
-  }
-
-  get refreshTokenLength(): number {
-    return this.configService.get('REFRESH_TOKEN_LENGTH', { infer: true });
-  }
-
-  get refreshTokenExpiresIn(): string {
-    return this.configService.get('REFRESH_TOKEN_EXPIRES_IN', { infer: true });
+  get auth0Audience(): string {
+    return this.configService.get('AUTH0_AUDIENCE', { infer: true });
   }
 }
