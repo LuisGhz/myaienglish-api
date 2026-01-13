@@ -1,6 +1,9 @@
 export interface JwtPayload {
-  sub: string;
-  email: string;
-  iat: number;
-  exp: number;
+  iss: string; // Issuer (Auth0 domain)
+  sub: string; // Subject (user ID)
+  aud: string[]; // Audience
+  iat: number; // Issued at timestamp
+  exp: number; // Expiration timestamp
+  scope: string; // OAuth scopes
+  azp: string; // Authorized party
 }
