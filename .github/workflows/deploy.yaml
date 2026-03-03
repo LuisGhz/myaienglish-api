@@ -43,15 +43,13 @@ jobs:
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN }}
-          REFRESH_TOKEN_LENGTH: ${{ secrets.REFRESH_TOKEN_LENGTH }}
-          REFRESH_TOKEN_EXPIRES_IN: ${{ secrets.REFRESH_TOKEN_EXPIRES_IN }}
+          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+          AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
           NODE_ENV: production
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          envs: DOCKERHUB_USER,DOCKERHUB_TOKEN,OPENAI_API_KEY,DB_HOST,DB_PORT,DB_USERNAME,DB_PASSWORD,DB_NAME,NODE_ENV,JWT_SECRET,JWT_EXPIRES_IN,REFRESH_TOKEN_LENGTH,REFRESH_TOKEN_EXPIRES_IN
+          envs: DOCKERHUB_USER,DOCKERHUB_TOKEN,OPENAI_API_KEY,DB_HOST,DB_PORT,DB_USERNAME,DB_PASSWORD,DB_NAME,AUTH0_DOMAIN,AUTH0_AUDIENCE,NODE_ENV
           script_path: scripts/deploy.sh
