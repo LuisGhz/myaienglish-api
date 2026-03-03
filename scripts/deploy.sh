@@ -17,10 +17,8 @@ REQUIRED_VARS=(
     "DB_PASSWORD"
     "DB_NAME"
     "OPENAI_API_KEY"
-    "JWT_SECRET"
-    "JWT_EXPIRES_IN"
-    "REFRESH_TOKEN_LENGTH"
-    "REFRESH_TOKEN_EXPIRES_IN"
+    "AUTH0_DOMAIN"
+    "AUTH0_AUDIENCE"
 )
 
 # Validate all required environment variables
