@@ -38,7 +38,7 @@ if [ ${#MISSING_VARS[@]} -gt 0 ]; then
 fi
 echo "✓ All environment variables are set"
 
-IMAGE_NAME="${DOCKERHUB_USER}/myaienglish-api-nestjs"
+IMAGE_NAME="${DOCKERHUB_USER}/personalwebapss:myaienglish-api-nestjs"
 export IMAGE_NAME
 CONTAINER_NAME="myaienglish-api"
 LOCAL_PORT=3003
