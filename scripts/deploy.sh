@@ -116,6 +116,8 @@ docker run -d \
     -e JWT_EXPIRES_IN="${JWT_EXPIRES_IN}" \
     -e REFRESH_TOKEN_LENGTH="${REFRESH_TOKEN_LENGTH}" \
     -e REFRESH_TOKEN_EXPIRES_IN="${REFRESH_TOKEN_EXPIRES_IN}" \
+    -e AUTH0_DOMAIN="${AUTH0_DOMAIN}" \
+    -e AUTH0_AUDIENCE="${AUTH0_AUDIENCE}" \
     -p ${LOCAL_PORT}:${DOCKER_PORT} \
     --network dbs \
     --name ${CONTAINER_NAME} \
