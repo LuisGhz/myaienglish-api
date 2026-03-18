@@ -7,6 +7,7 @@ import {
   EnglishEnhancerModule,
   UserModule,
   PhraseComparisonModule,
+  HealthModule,
 } from './domains';
 
 @Module({
@@ -16,6 +17,7 @@ import {
     EnglishEnhancerModule,
     UserModule,
     PhraseComparisonModule,
+    HealthModule,
   ],
   providers: [
     {
