@@ -19,6 +19,7 @@ REQUIRED_VARS=(
     "OPENAI_API_KEY"
     "AUTH0_DOMAIN"
     "AUTH0_AUDIENCE"
+    "FRONTEND_URL"
 )
 
 # Validate all required environment variables
@@ -84,6 +85,7 @@ docker run --rm \
     -e OPENAI_API_KEY="${OPENAI_API_KEY}" \
     -e AUTH0_DOMAIN="${AUTH0_DOMAIN}" \
     -e AUTH0_AUDIENCE="${AUTH0_AUDIENCE}" \
+    -e FRONTEND_URL="${FRONTEND_URL}" \
     --network dbs \
     "${IMAGE_NAME}" \
     bun run migration:run:prod
@@ -118,6 +120,7 @@ docker run -d \
     -e REFRESH_TOKEN_EXPIRES_IN="${REFRESH_TOKEN_EXPIRES_IN}" \
     -e AUTH0_DOMAIN="${AUTH0_DOMAIN}" \
     -e AUTH0_AUDIENCE="${AUTH0_AUDIENCE}" \
+    -e FRONTEND_URL="${FRONTEND_URL}" \
     -p ${LOCAL_PORT}:${DOCKER_PORT} \
     --network dbs \
     --name ${CONTAINER_NAME} \

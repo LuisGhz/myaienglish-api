@@ -45,11 +45,12 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
           AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE }}
+          FRONTEND_URL: ${{ vars.FRONTEND_URL }}
           NODE_ENV: production
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          envs: DOCKERHUB_USER,DOCKERHUB_TOKEN,OPENAI_API_KEY,DB_HOST,DB_PORT,DB_USERNAME,DB_PASSWORD,DB_NAME,AUTH0_DOMAIN,AUTH0_AUDIENCE,NODE_ENV
+          envs: DOCKERHUB_USER,DOCKERHUB_TOKEN,OPENAI_API_KEY,DB_HOST,DB_PORT,DB_USERNAME,DB_PASSWORD,DB_NAME,AUTH0_DOMAIN,AUTH0_AUDIENCE,FRONTEND_URL,NODE_ENV
           script_path: scripts/deploy.sh
