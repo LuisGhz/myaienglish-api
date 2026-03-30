@@ -4,7 +4,7 @@ const envSchema = z.object({
   NODE_ENV: z
     .enum(['development', 'production', 'test'])
     .default('development'),
-  FRIONTEND_URL: z.url().default('http://localhost:4200'),
+  FRONTEND_URL: z.url().default('http://localhost:4200'),
   PORT: z.coerce.number().default(3000),
   OPENAI_API_KEY: z.string().min(1, 'OPENAI_API_KEY is required'),
   DB_HOST: z.string().default('localhost'),

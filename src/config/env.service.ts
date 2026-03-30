@@ -11,7 +11,7 @@ export class EnvService {
   }
 
   get frontendUrl(): string {
-    return this.configService.get('FRIONTEND_URL', { infer: true });
+    return this.configService.get('FRONTEND_URL', { infer: true });
   }
 
   get port(): number {
