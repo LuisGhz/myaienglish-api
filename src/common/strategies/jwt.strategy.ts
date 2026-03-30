@@ -8,16 +8,17 @@ import type { JwtPayload } from '../interfaces';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(envService: EnvService) {
+    const domain = envService.auth0Domain.replace(/\/$/, '');
     super({
       secretOrKeyProvider: passportJwtSecret({
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: `${envService.auth0Domain}/.well-known/jwks.json`,
+        jwksUri: `${domain}/.well-known/jwks.json`,
       }),
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       audience: envService.auth0Audience,
-      issuer: `${envService.auth0Domain}/`,
+      issuer: `${domain}/`,
       algorithms: ['RS256'],
     });
   }
