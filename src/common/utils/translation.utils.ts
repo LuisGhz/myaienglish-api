@@ -21,10 +21,10 @@ export const getPrompt = (text: string, context?: string) => {
 
 export const translationObject = z.object({
   grammarFix: z.string().describe('The translated text.'),
-  informalWayB2: z.string().describe('The translated text in an informal way for B2 level.'),
-  informalWayC1: z.string().describe('The translated text in an informal way for C1 level.'),
-  formalWayB2: z.string().describe('The translated text in a formal way for B2 level.'),
-  formalWayC1: z.string().describe('The translated text in a formal way for C1 level.'),
+  informalB2: z.string().describe('The translated text in an informal way for B2 level.'),
+  informalC1: z.string().describe('The translated text in an informal way for C1 level.'),
+  formalB2: z.string().describe('The translated text in a formal way for B2 level.'),
+  formalC1: z.string().describe('The translated text in a formal way for C1 level.'),
 });
 
 export type TranslationSchema = z.infer<typeof translationObject>;
