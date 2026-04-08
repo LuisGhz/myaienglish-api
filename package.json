@@ -91,11 +91,13 @@
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s",
-      "**/*.module.ts",
-      "**/*.config.ts",
-      "**/index.ts",
-      "**/typeorm-cli.ts",
-      "**/*.interface.ts"
+      "!**/*.module.ts",
+      "!config/**/*.(t|j)s",
+      "!**/index.ts",
+      "!typeorm-cli.ts",
+      "!main.ts",
+      "!**/migrations/**/*.(t|j)s",
+      "!**/*.interface.ts"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
